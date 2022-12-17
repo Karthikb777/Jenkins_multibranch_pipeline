@@ -3,8 +3,18 @@ pipeline {
 
     stages {
         stage("build") {
-            steps {
-                echo "building the application..."
+            parallel {
+                stage("windows") {
+                    steps {
+                        echo "building for windows..."
+                    }
+                }
+
+                stage("linux") {
+                    steps {
+                        echo "building for linux..."
+                    }
+                }
             }
         }
 
